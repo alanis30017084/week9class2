@@ -39,16 +39,16 @@ namespace EmployeeClass
 
         public double NetSalary(double _salary, double _tax)
         {
-            return Math.Round(salary - (salary * (tax / 100)), 2);
-            // Returns 0... needs fix, ran out of time.
+            // Fixed NetSalary method only returning zero
+            return Math.Round(salary - (salary * (tax / 100)));
         }
 
         public Employee(string _fname, string _lname, double _salary, double _tax)
         {
-            Fname = fname;
-            Lname = lname;
-            Salary = salary;
-            Tax = tax;
+            Fname = _fname;
+            Lname = _lname;
+            Salary = _salary;
+            Tax = _tax;
         }
 
     }
