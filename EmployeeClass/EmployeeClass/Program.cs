@@ -16,11 +16,12 @@ namespace EmployeeClass
             string lname = Console.ReadLine();
             Console.Write("Please enter your salary: ");
             double salary = double.Parse(Console.ReadLine());
-            Console.Write("Please enter your percentage tax: ");
+            Console.Write("Please enter your percentage tax as a decimal (0-1): ");
             double tax = double.Parse(Console.ReadLine());
 
             Employee a1 = new Employee(fname, lname, salary, tax);
-            Console.WriteLine($"\nYour details are\n\nFull name: {fname} {lname}\nNet salary (after tax): {a1.NetSalary(salary, tax)}");
+            // Fixed 'a1.Fname' to be called instead of 'fname', same for rest of the values.
+            Console.WriteLine($"\nYour details are\n\nFull name: {a1.Fname} {a1.Lname}\nNet salary (after tax): {a1.NetSalary(a1.Salary, a1.Tax)}");
             Console.ReadLine();
         }
     }
@@ -39,8 +40,8 @@ namespace EmployeeClass
 
         public double NetSalary(double _salary, double _tax)
         {
-            // Fixed NetSalary method only returning zero
-            return Math.Round(salary - (salary * (tax / 100)));
+            // Fixed NetSalary method to round to 2 d.p., fixed capitalisation of salary & tax.
+            return Math.Round(Salary - (Salary * Tax), 2);
         }
 
         public Employee(string _fname, string _lname, double _salary, double _tax)
